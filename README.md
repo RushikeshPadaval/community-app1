@@ -8,25 +8,19 @@ It allows users to register, log in, post updates, and view user profiles in a s
 
 ## 🚀 Live Demo
 
-🔗 [Live URL (Vercel/Render)](https://your-live-link.com)
+🔗 [Live URL (Render)](https://community-app1-client.onrender.com/)
 
----
-
-## 📂 GitHub Repository
-
-🔗 [GitHub Repo](https://github.com/your-username/community-app)
-
----
+----
 
 ## 🧰 Tech Stack
 
 | Layer       | Technology            |
 |-------------|------------------------|
-| Frontend    | React.js + React Router |
+| Frontend    | React.js + React Router + Bootstrap |
 | Backend     | Node.js + Express       |
 | Database    | MongoDB (Mongoose)      |
 | Auth        | JWT + bcryptjs          |
-| Hosting     | Vercel (Frontend), Render (Backend) |
+| Hosting     | Render (Frontend), Render (Backend) |
 
 ---
 
@@ -56,15 +50,18 @@ It allows users to register, log in, post updates, and view user profiles in a s
 git clone https://github.com/your-username/community-app
 cd community-app
 
-2. Setup Backend
+2. Setup Server
+
+
+Create a .env file with the following in server
+
+JWT_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
+MONGO_URI=mongodb+srv://rushikeshpadaval:9011816349@cluster0.x99bt3y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 cd server
 npm install
-touch .env
+node index.js
 
-Create a .env file with the following:
-JWT_SECRET=your_jwt_secret_key
-MONGO_URI=your_mongodb_connection_uri
 Then:
 3. Setup Frontend
 
@@ -75,3 +72,4 @@ cd ../client
 npm install
 npm start
 
+My request dont use Brave Browser Use edge or chrome
