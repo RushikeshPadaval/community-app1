@@ -8,7 +8,12 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/users');
 
+//app config
 const app = express();
+const port = process.env.PORT || 5000; 
+
+
+//middleware
 app.use(cors());
 app.use(express.json());
 
