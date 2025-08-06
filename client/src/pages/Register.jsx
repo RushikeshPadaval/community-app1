@@ -24,6 +24,7 @@ export default function Register() {
                 type="text"
                 className="form-control"
                 placeholder="Name"
+                  autoComplete="name" // Added
                 onChange={e => setForm({ ...form, name: e.target.value })}
               />
             </div>
@@ -32,6 +33,7 @@ export default function Register() {
                 type="email"
                 className="form-control"
                 placeholder="Email"
+                autoComplete="email" // Added
                 onChange={e => setForm({ ...form, email: e.target.value })}
               />
             </div>

@@ -13,6 +13,16 @@ const app = express();
 const port = process.env.PORT || 5000; 
 
 
+// Enable CORS for specific frontend URL
+app.use(cors({
+  origin: 'https://community-app1-client.onrender.com',
+  credentials: true // If using cookies/auth
+}));
+
+// Handle preflight requests
+app.options('*', cors());
+
+
 //middleware
 app.use(cors());
 app.use(express.json());
