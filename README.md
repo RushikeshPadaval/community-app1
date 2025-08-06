@@ -74,4 +74,4 @@ cd ../client
 npm install
 npm start
 
-My request dont use Brave Browser Use edge or chrome
+My request dont use Brave Browser Use edge or chrome for locally run
