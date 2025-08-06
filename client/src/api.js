@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://community-app-server.onrender.com/', // change this if your backend is hosted
+  baseURL: process.env.NODE_ENV === 'production' 
+    ? 'https://your-render-backend-url.onrender.com/api'
+    : 'http://localhost:5000/api'
 });
-
 export default API;
