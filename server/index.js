@@ -24,11 +24,14 @@ app.options('*', cors());
 
 
 //middleware
-app.use(cors());
 app.use(express.json());
-
+console.log("✅ Mounting /api/auth");
 app.use('/api/auth', authRoutes);
+
+console.log("✅ Mounting /api/posts");
 app.use('/api/posts', postRoutes);
+
+console.log("✅ Mounting /api/users");
 app.use('/api/users', userRoutes);
 
 mongoose.connect(process.env.MONGO_URI)

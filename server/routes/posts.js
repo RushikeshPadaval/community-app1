@@ -4,6 +4,10 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 const router = express.Router();
 
+
+console.log("✅ posts.js loaded");
+
+
 // Get all posts
 router.get('/', async (req, res) => {
   const posts = await Post.find().populate('author', 'name').sort({ createdAt: -1 });
