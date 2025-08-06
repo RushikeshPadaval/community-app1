@@ -8,10 +8,9 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/users');
 
-//app config
+// App config
 const app = express();
-const port = process.env.PORT || 5000; 
-
+const PORT = process.env.PORT || 5000; 
 
 // Enable CORS for specific frontend URL
 app.use(cors({
@@ -22,21 +21,41 @@ app.use(cors({
 // Handle preflight requests
 app.options('*', cors());
 
-
-//middleware
+// Middleware
 app.use(express.json());
-console.log("✅ Mounting /api/auth");
-app.use('/api/auth', authRoutes);
 
-console.log("✅ Mounting /api/posts");
-app.use('/api/posts', postRoutes);
+// Basic health check route
+app.get('/', (req, res) => {
+  res.json({ message: 'Server is running!' });
+});
 
-console.log("✅ Mounting /api/users");
-app.use('/api/users', userRoutes);
+// Mount routes with error handling
+try {
+  console.log("✅ Mounting /api/auth");
+  app.use('/api/auth', authRoutes);
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => app.listen(5000, () => console.log('Server running on port 5000')))
-  .catch(err => console.error(err));
+  console.log("✅ Mounting /api/posts");
+  app.use('/api/posts', postRoutes);
 
+  console.log("✅ Mounting /api/users");
+  app.use('/api/users', userRoutes);
   
- console.log("✅ reached end of index.js")
+  console.log("✅ All routes mounted successfully");
+} catch (error) {
+  console.error("🔥 Error mounting routes:", error);
+  process.exit(1);
+}
+
+// Connect to MongoDB and start server
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`✅ Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err);
+    process.exit(1);
+  });
+
+console.log("✅ Reached end of index.js");
